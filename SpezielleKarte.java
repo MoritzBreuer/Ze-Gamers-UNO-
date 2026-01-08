@@ -13,7 +13,7 @@ public class SpezielleKarte extends Karte {
     }
 
     // Führt den Effekt der speziellen Karte aus
-    public void effektAnwenden(UnoSpiel spiel) {
+    public void effektAnwenden(UNOSpiel spiel) {
 
         switch (effektTyp) {
 
@@ -43,4 +43,5 @@ public class SpezielleKarte extends Karte {
         }
     }
 }
+
 
