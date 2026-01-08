@@ -34,7 +34,7 @@ public class Main {
             System.out.println("Am Zug: " + spieler.getName());
 
             // Oberste Karte anzeigen
-            Karte oben = spiel.getGespielteKarten().obersteKarte();
+            UNOKarte oben = spiel.getGespielteKarten().obersteKarte();
             System.out.println("Oberste Karte: " + oben);
 
             // Handkarten anzeigen
@@ -48,7 +48,7 @@ public class Main {
             int wahl = scanner.nextInt();
 
             if (wahl == -1) {
-                Karte gezogen = spiel.getKartendeck().kartenEntfernen();
+                UNOKarte gezogen = spiel.getKartendeck().kartenEntfernen();
                 spieler.getKartenAufHand().karteHinzufuegen(gezogen);
                 System.out.println("Du ziehst: " + gezogen);
                 spiel.naechsterSpieler();
@@ -60,7 +60,7 @@ public class Main {
                 continue;
             }
 
-            Karte karte = spieler.getKartenAufHand().getKarte(wahl);
+            UNOKarte karte = spieler.getKartenAufHand().getKarte(wahl);
 
             if (spiel.kartenKontrollieren(karte)) {
                 spiel.karteSpielen(karte);
