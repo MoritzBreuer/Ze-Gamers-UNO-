@@ -58,11 +58,11 @@ public class UNOSpiel {
             }
         }
 
-        Karte start = kartendeck.kartenEntfernen();
+        UNOKarte start = kartendeck.kartenEntfernen();
        _attachStartkarte(start);
     }
 
-    private void _attachStartkarte(Karte start) {
+    private void _attachStartkarte(UNOKarte start) {
         gespielteKarten.karteHinzufügen(start);
         aktuelleFarbe = start.getFarbe();
     }
@@ -77,9 +77,9 @@ public class UNOSpiel {
     // ===============================
     // Prüfen, ob Karte spielbar ist
     // ===============================
-    public boolean kartenKontrollieren(Karte karte) {
+    public boolean kartenKontrollieren(UNOKarte karte) {
 
-        Karte oben = gespielteKarten.obersteKarte();
+        UNOKarte oben = gespielteKarten.obersteKarte();
 
         if (oben == null) {
             return true;
@@ -97,7 +97,7 @@ public class UNOSpiel {
     // ===============================
     // Karte spielen
     // ===============================
-    public void karteSpielen(Karte karte) {
+    public void karteSpielen(UNOKarte karte) {
 
         if (!kartenKontrollieren(karte)) {
             System.out.println("Diese Karte kann nicht gespielt werden!");
@@ -171,7 +171,7 @@ public class UNOSpiel {
                 + " muss " + anzahl + " Karten ziehen!");
 
         for (int i = 0; i < anzahl; i++) {
-            Karte k = kartendeck.kartenEntfernen();
+            UNOKarte k = kartendeck.kartenEntfernen();
             if (k != null) {
                 naechster.getKartenAufHand().karteHinzufuegen(k);
             }
@@ -195,4 +195,3 @@ public class UNOSpiel {
         return false;
     }
 }
-
