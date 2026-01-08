@@ -11,19 +11,26 @@ public class UNOSpiel {
     private int aktuellerSpielerIndex;
     private int richtung; // 1 = vorwärts, -1 = rückwärts
 
-    // 🔥 Aktuell gültige Farbe
+    // aktuell gültige Farbe (wichtig für Joker)
     private String aktuelleFarbe;
 
+    // ===============================
+    // Konstruktor
+    // ===============================
     public UNOSpiel() {
         kartendeck = new Kartendeck();
         gespielteKarten = new GespielteKarten();
         spieler = new ArrayList<>();
+
         aktuellerSpielerIndex = 0;
         richtung = 1;
 
         kartendeck.mischen();
     }
 
+    // ===============================
+    // Getter
+    // ===============================
     public Kartendeck getKartendeck() {
         return kartendeck;
     }
@@ -40,7 +47,7 @@ public class UNOSpiel {
     }
 
     // ===============================
-    // Karten austeilen + Startkarte
+    // Karten verteilen + Startkarte
     // ===============================
     public void kartenVerteilen() {
 
@@ -52,8 +59,11 @@ public class UNOSpiel {
         }
 
         Karte start = kartendeck.kartenEntfernen();
-        gespielteKarten.karteHinzufügen(start);
+       _attachStartkarte(start);
+    }
 
+    private void _attachStartkarte(Karte start) {
+        gespielteKarten.karteHinzufügen(start);
         aktuelleFarbe = start.getFarbe();
     }
 
@@ -65,7 +75,7 @@ public class UNOSpiel {
     }
 
     // ===============================
-    // Spielbarkeitsprüfung
+    // Prüfen, ob Karte spielbar ist
     // ===============================
     public boolean kartenKontrollieren(Karte karte) {
 
@@ -100,11 +110,10 @@ public class UNOSpiel {
         gespielteKarten.karteHinzufügen(karte);
         spieler.getKartenAufHand().karteEntfernen(karte);
 
-        System.out.println(spieler.getName()
-                + " spielt: " + karte);
+        System.out.println(spieler.getName() + " spielt: " + karte);
 
         // ===============================
-        // Joker-Farbe wählen
+        // Joker → Farbe wählen
         // ===============================
         if (karte instanceof SpezielleKarte
                 && karte.getWert().equals("joker")) {
@@ -114,12 +123,11 @@ public class UNOSpiel {
             System.out.println("Neue Farbe ist: " + neueFarbe);
 
         } else {
-            // normale Karte
             aktuelleFarbe = karte.getFarbe();
         }
 
         // ===============================
-        // Andere Spezialeffekte
+        // Spezialeffekte ausführen
         // ===============================
         if (karte instanceof SpezielleKarte) {
             ((SpezielleKarte) karte).effektAnwenden(this);
@@ -138,14 +146,40 @@ public class UNOSpiel {
                         % spieler.size();
     }
 
+    // ===============================
+    // Spezialeffekte
+    // ===============================
     public void richtungUmdrehen() {
         richtung *= -1;
-        System.out.println("Spielrichtung wurde geändert!");
+        System.out.println("🔄 Spielrichtung wurde geändert!");
     }
 
     public void spielerUeberspringen() {
         naechsterSpieler();
-        System.out.println("Ein Spieler wurde übersprungen!");
+        System.out.println("⏭ Ein Spieler wurde übersprungen!");
+    }
+
+    public void getNaechsterSpielerzieheKarte(int anzahl) {
+
+        int naechsterIndex =
+                (aktuellerSpielerIndex + richtung + spieler.size())
+                        % spieler.size();
+
+        UNOSpieler naechster = spieler.get(naechsterIndex);
+
+        System.out.println(naechster.getName()
+                + " muss " + anzahl + " Karten ziehen!");
+
+        for (int i = 0; i < anzahl; i++) {
+            Karte k = kartendeck.kartenEntfernen();
+            if (k != null) {
+                naechster.getKartenAufHand().karteHinzufuegen(k);
+            }
+        }
+
+        // Zug des betroffenen Spielers überspringen
+        aktuellerSpielerIndex = naechsterIndex;
+        naechsterSpieler();
     }
 
     // ===============================
@@ -154,7 +188,7 @@ public class UNOSpiel {
     public boolean spielBeendet() {
         for (UNOSpieler s : spieler) {
             if (s.getKartenAufHand().anzahlKarten() == 0) {
-                System.out.println("🏆 Gewinner: " + s.getName());
+                System.out.println("Gewinner: " + s.getName());
                 return true;
             }
         }
