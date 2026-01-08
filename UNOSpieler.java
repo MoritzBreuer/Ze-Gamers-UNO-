@@ -1,3 +1,5 @@
+package UNO;
+
 import java.util.Scanner;
 
 public class UNOSpieler {
@@ -18,24 +20,36 @@ public class UNOSpieler {
         return kartenAufHand;
     }
 
-    // Spieler wählt eine Farbe (z.B. bei Farbwechselkarte)
-    public Farbe farbeAuswaehlen() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(name + ", wähle eine Farbe (ROT, GELB, GRUEN, BLAU):");
-
-        while (true) {
-            try {
-                return Farbe.valueOf(scanner.nextLine().toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ungültige Farbe, bitte erneut eingeben:");
-            }
-        }
-    }
-
+    // ===============================
     // Spieler sagt UNO
+    // ===============================
     public void unoSagen() {
         if (kartenAufHand.anzahlKarten() == 1) {
             System.out.println(name + " sagt: UNO!");
+        }
+    }
+
+    // ===============================
+    // 🔥 NEU: Farbe für Joker auswählen
+    // ===============================
+    public String farbeAuswaehlen() {
+
+        Scanner scanner = new Scanner(System.in);
+        String farbe;
+
+        while (true) {
+            System.out.print(name +
+                ", wähle eine Farbe (rot/blau/grün/gelb): ");
+            farbe = scanner.nextLine().toLowerCase();
+
+            if (farbe.equals("rot")
+                    || farbe.equals("blau")
+                    || farbe.equals("grün")
+                    || farbe.equals("gelb")) {
+                return farbe;
+            }
+
+            System.out.println("Ungültige Farbe!");
         }
     }
 }
