@@ -178,8 +178,8 @@ public class UNOSpiel {
         }
 
         // Zug des betroffenen Spielers überspringen
-        aktuellerSpielerIndex = naechsterIndex;
-        naechsterSpieler();
+        //aktuellerSpielerIndex = naechsterIndex;
+        //naechsterSpieler();
     }
 
     // ===============================
@@ -195,3 +195,4 @@ public class UNOSpiel {
         return false;
     }
 }
+
