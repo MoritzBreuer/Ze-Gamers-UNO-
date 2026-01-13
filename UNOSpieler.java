@@ -30,7 +30,7 @@ public class UNOSpieler {
     }
 
     // ===============================
-    // 🔥 NEU: Farbe für Joker auswählen
+    // Farbe für Joker auswählen
     // ===============================
     public String farbeAuswaehlen() {
 
@@ -39,12 +39,12 @@ public class UNOSpieler {
 
         while (true) {
             System.out.print(name +
-                ", wähle eine Farbe (rot/blau/grün/gelb): ");
+                ", wähle eine Farbe (rot/blau/gruen/gelb): ");
             farbe = scanner.nextLine().toLowerCase();
 
             if (farbe.equals("rot")
                     || farbe.equals("blau")
-                    || farbe.equals("grün")
+                    || farbe.equals("gruen")
                     || farbe.equals("gelb")) {
                 return farbe;
             }
