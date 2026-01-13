@@ -42,8 +42,8 @@ public class UNOSpiel {
     // ===============================
     // Spieler hinzufügen
     // ===============================
-    public void spielerHinzufuegen(UNOSpieler s) {
-        spieler.add(s);
+    public void spielerHinzufuegen(UNOSpieler aktuellerSpieler) {
+        spieler.add(aktuellerSpieler);
     }
 
     // ===============================
@@ -51,9 +51,9 @@ public class UNOSpiel {
     // ===============================
     public void kartenVerteilen() {
 
-        for (UNOSpieler s : spieler) {
+        for (UNOSpieler aktuellerSpieler : spieler) {
             for (int i = 0; i < 7; i++) {
-                s.getKartenAufHand()
+                aktuellerSpieler.getKartenAufHand()
                  .karteHinzufuegen(kartendeck.kartenEntfernen());
             }
         }
@@ -151,12 +151,12 @@ public class UNOSpiel {
     // ===============================
     public void richtungUmdrehen() {
         richtung *= -1;
-        System.out.println("🔄 Spielrichtung wurde geändert!");
+        System.out.println("Spielrichtung wurde geändert!");
     }
 
     public void spielerUeberspringen() {
         naechsterSpieler();
-        System.out.println("⏭ Ein Spieler wurde übersprungen!");
+        System.out.println("Ein Spieler wurde übersprungen!");
     }
 
     public void getNaechsterSpielerzieheKarte(int anzahl) {
@@ -186,9 +186,9 @@ public class UNOSpiel {
     // Spielende
     // ===============================
     public boolean spielBeendet() {
-        for (UNOSpieler s : spieler) {
-            if (s.getKartenAufHand().anzahlKarten() == 0) {
-                System.out.println("Gewinner: " + s.getName());
+        for (UNOSpieler aktuellerSpieler : spieler) {
+            if (aktuellerSpieler.getKartenAufHand().anzahlKarten() == 0) {
+                System.out.println("Gewinner: " + aktuellerSpieler.getName());
                 return true;
             }
         }
