@@ -10,15 +10,21 @@ public class Main {
 
         UNOSpiel spiel = new UNOSpiel();
 
-        // Spieler erstellen
-        System.out.print("Name Spieler 1: ");
-        UNOSpieler s1 = new UNOSpieler(scanner.nextLine());
+        // Anzahl der Spieler abfragen (2–6 erlaubt)
+        int anzahlSpieler;
 
-        System.out.print("Name Spieler 2: ");
-        UNOSpieler s2 = new UNOSpieler(scanner.nextLine());
+        do {
+            System.out.print("Wie viele Spieler? (2 - 6): ");
+            anzahlSpieler = scanner.nextInt();
+            scanner.nextLine(); // wichtig!
+        } while (anzahlSpieler < 2 || anzahlSpieler > 6);
 
-        spiel.spielerHinzufuegen(s1);
-        spiel.spielerHinzufuegen(s2);
+        // Spieler dynamisch erstellen
+        for (int i = 1; i <= anzahlSpieler; i++) {
+            System.out.print("Name Spieler " + i + ": ");
+            UNOSpieler spieler = new UNOSpieler(scanner.nextLine());
+            spiel.spielerHinzufuegen(spieler);
+        }
 
         spiel.kartenVerteilen();
 
