@@ -1,15 +1,15 @@
 package UNO;
 
-public class Karte {
+public class UNOKarte {
 
-    // Farbe der Karte (rot, blau, grün, gelb, joker)
+    // Farbe der Karte (rot, blau, grün, gelb)
     private String farbe;
 
     // Wert der Karte (0–9, +2, aussetzen, richtungswechsel, etc.)
     private String wert;
 
     // Konstruktor: erzeugt eine Karte mit Farbe und Wert
-    public Karte(String farbe, String wert) {
+    public UNOKarte(String farbe, String wert) {
         this.farbe = farbe;
         this.wert = wert;
     }
@@ -25,7 +25,7 @@ public class Karte {
     }
 
     // Prüft, ob diese Karte auf die oberste Karte gelegt werden darf
-    public boolean kannGespieltWerden(Karte obersteKarte) {
+    public boolean kannGespieltWerden(UNOKarte obersteKarte) {
 
         // gleiche Farbe → spielbar
         // gleicher Wert → spielbar
@@ -41,4 +41,5 @@ public class Karte {
         return farbe + " " + wert;
     }
 }
+
 
