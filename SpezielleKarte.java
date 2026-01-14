@@ -1,6 +1,6 @@
 package UNO;
 
-public class SpezielleKarte extends Karte {
+public class SpezielleKarte extends UNOKarte {
 
     // Art des Effekts: "+2", "inverser", "aussetzen", "joker"
     private String effektTyp;
@@ -19,7 +19,7 @@ public class SpezielleKarte extends Karte {
 
             case "+2":
                 // Nächster Spieler zieht 2 Karten
-               // spiel.getNaechsterSpielerzieheKarte(2);
+               spiel.getNaechsterSpielerzieheKarte(2);
                 break;
 
             case "inverser":
@@ -43,5 +43,6 @@ public class SpezielleKarte extends Karte {
         }
     }
 }
+
 
 
