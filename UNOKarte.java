@@ -25,14 +25,20 @@ public class UNOKarte {
     }
 
     // Prüft, ob diese Karte auf die oberste Karte gelegt werden darf
-    public boolean kannGespieltWerden(UNOKarte obersteKarte) {
+    public boolean kannGespieltWerden(UNOKarte obersteKarte, String aktuelleFarbe) {
 
-        // gleiche Farbe → spielbar
-        // gleicher Wert → spielbar
-        // Joker → immer spielbar
-        return this.farbe.equals(obersteKarte.farbe)
-                || this.wert.equals(obersteKarte.wert)
-                || this.farbe.equals("joker");
+        // Joker immer spielbar
+        if (farbe.equals("joker")) {
+            return true;
+        }
+
+        // Farbe passt zur aktuell gültigen Farbe
+        if (farbe.equals(aktuelleFarbe)) {
+            return true;
+        }
+
+        // Wert passt zur obersten Karte
+        return wert.equals(obersteKarte.getWert());
     }
 
     // Bestimmt, wie die Karte als Text angezeigt wird
@@ -41,5 +47,6 @@ public class UNOKarte {
         return farbe + " " + wert;
     }
 }
+
 
 
