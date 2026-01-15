@@ -10,6 +10,24 @@ public class Main {
 
         UNOSpiel spiel = new UNOSpiel();
 
+        // Anzahl der Spieler abfragen (2–6 erlaubt)
+        // int anzahlSpieler;
+
+        /*
+         * do {
+         * System.out.print("Wie viele Spieler? (2 - 4): ");
+         * anzahlSpieler = scanner.nextInt();
+         * scanner.nextLine();
+         * } while (anzahlSpieler < 2 || anzahlSpieler > 4);
+         * 
+         * // Spieler dynamisch erstellen
+         * for (int i = 1; i <= anzahlSpieler; i++) {
+         * System.out.print("Name Spieler " + i + ": ");
+         * UNOSpieler spieler = new UNOSpieler(scanner.nextLine());
+         * spiel.spielerHinzufuegen(spieler);
+         * }
+         */
+
         System.out.print("Name Spieler 1: ");
         UNOSpieler spieler1 = new UNOSpieler(scanner.nextLine());
         System.out.print("Name Spieler 2: ");
@@ -59,7 +77,10 @@ public class Main {
 
             UNOKarte karte = spieler.getKartenAufHand().getKarte(wahl);
 
-            if (spiel.kartenKontrollieren(karte)) {
+            if (karte.kannGespieltWerden(
+                    spiel.getGespielteKarten().obersteKarte(),
+                    spiel.getAktuelleFarbe())) {
+
                 spiel.karteSpielen(karte);
             } else {
                 System.out.println("Diese Karte kann nicht gespielt werden!");
@@ -69,5 +90,3 @@ public class Main {
         scanner.close();
     }
 }
-
-
