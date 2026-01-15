@@ -14,10 +14,10 @@ public class Main {
         int anzahlSpieler;
 
         do {
-            System.out.print("Wie viele Spieler? (2 - 6): ");
+            System.out.print("Wie viele Spieler? (2 - 4): ");
             anzahlSpieler = scanner.nextInt();
-            scanner.nextLine(); // wichtig!
-        } while (anzahlSpieler < 2 || anzahlSpieler > 6);
+            scanner.nextLine();
+        } while (anzahlSpieler < 2 || anzahlSpieler > 4);
 
         // Spieler dynamisch erstellen
         for (int i = 1; i <= anzahlSpieler; i++) {
@@ -43,7 +43,7 @@ public class Main {
             UNOKarte oben = spiel.getGespielteKarten().obersteKarte();
             System.out.println("Oberste Karte: " + oben);
 
-            // Handkarten anzeigen
+            // HandvonSpieler anzeigen
             System.out.println("\nDeine Karten:");
             for (int i = 0; i < spieler.getKartenAufHand().anzahlKarten(); i++) {
                 System.out.println(i + ": "
