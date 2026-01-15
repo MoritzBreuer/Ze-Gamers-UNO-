@@ -10,9 +10,6 @@ public class Main {
 
         UNOSpiel spiel = new UNOSpiel();
 
-        // Anzahl der Spieler abfragen (2–6 erlaubt)
-        int anzahlSpieler;
-
         System.out.print("Name Spieler 1: ");
         UNOSpieler spieler1 = new UNOSpieler(scanner.nextLine());
         System.out.print("Name Spieler 2: ");
@@ -72,4 +69,5 @@ public class Main {
         scanner.close();
     }
 }
+
 
