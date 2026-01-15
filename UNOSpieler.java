@@ -5,18 +5,18 @@ import java.util.Scanner;
 public class UNOSpieler {
 
     private String name;
-    private Handkarten kartenAufHand;
+    private HandvonSpieler kartenAufHand;
 
     public UNOSpieler(String name) {
         this.name = name;
-        this.kartenAufHand = new Handkarten();
+        this.kartenAufHand = new HandvonSpieler();
     }
 
     public String getName() {
         return name;
     }
 
-    public Handkarten getKartenAufHand() {
+    public HandvonSpieler getKartenAufHand() {
         return kartenAufHand;
     }
 
