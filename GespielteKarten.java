@@ -1,37 +1,29 @@
 package UNO;
 
-// ArrayList zum Speichern der gespielten Karten
 import java.util.ArrayList;
 
 public class GespielteKarten {
 
-    // Liste, die alle gespielten Karten enthält
-    // Die letzte Karte ist die oberste Karte
-    private ArrayList<Karte> stapel;
+    // Ablagestapel
+    private ArrayList<UNOKarte> stapel;
 
-    // Konstruktor: erstellt einen leeren Ablagestapel
+    // Konstruktor
     public GespielteKarten() {
         stapel = new ArrayList<>();
     }
 
-    // Fügt eine Karte zum Ablagestapel hinzu
-    // (entspricht dem Ablegen einer Karte im Spiel)
-    public void karteHinzufügen(Karte karte) {
+    // Karte ablegen
+    public void karteHinzufügen(UNOKarte karte) {
         stapel.add(karte);
     }
 
-    // Gibt die oberste Karte des Ablagestapels zurück
-    public Karte obersteKarte() {
+    // Oberste Karte zurückgeben
+    public UNOKarte obersteKarte() {
 
-        // Prüfen, ob bereits Karten gespielt wurden
         if (!stapel.isEmpty()) {
-
-            // Letzte Karte der Liste ist die oberste
             return stapel.get(stapel.size() - 1);
         }
 
-        // Falls noch keine Karte gespielt wurde
         return null;
     }
-
 }
