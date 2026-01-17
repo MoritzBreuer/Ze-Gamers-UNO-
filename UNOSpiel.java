@@ -143,6 +143,20 @@ public class UNOSpiel {
                 + " zieht " + anzahl + " Karten!");
     }
 
+        public void spielerZiehtKarte() {
+
+        UNOSpieler aktuellerSpieler = getAktuellerSpieler();
+        UNOKarte gezogen = kartendeck.kartenEntfernen();
+
+        aktuellerSpieler.getKartenAufHand()
+                .karteHinzufuegen(gezogen);
+
+        System.out.println(aktuellerSpieler.getName()
+                + " zieht die Karte: " + gezogen);
+
+        naechsterSpieler();
+    }
+
     // ===============================
     // Spielende
     // ===============================
@@ -156,3 +170,4 @@ public class UNOSpiel {
         return false;
     }
 }
+
