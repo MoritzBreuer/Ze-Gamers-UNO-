@@ -63,10 +63,7 @@ public class Main {
             int wahl = scanner.nextInt();
 
             if (wahl == -1) {
-                UNOKarte gezogen = spiel.getKartendeck().kartenEntfernen();
-                spieler.getKartenAufHand().karteHinzufuegen(gezogen);
-                System.out.println("Du ziehst: " + gezogen);
-                spiel.naechsterSpieler();
+                spiel.spielerZiehtKarte();
                 continue;
             }
 
@@ -90,3 +87,4 @@ public class Main {
         scanner.close();
     }
 }
+
