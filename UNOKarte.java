@@ -28,7 +28,7 @@ public class UNOKarte {
     public boolean kannGespieltWerden(UNOKarte obersteKarte, String aktuelleFarbe) {
 
         // Joker immer spielbar
-        if (farbe.equals("joker")) {
+        if (farbe.equals("schwarz")) {
             return true;
         }
 
